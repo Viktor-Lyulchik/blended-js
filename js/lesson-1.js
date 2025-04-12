@@ -28,14 +28,13 @@
 // console.log(min);
 // let qUarter;
 
-// let quarter;
-// if (min >= 0 && min <= 15) {
+// if (min >= 0 && min < 15) {
 //   qUarter = 'першу';
-// } else if (min >= 16 && min <= 30) {
+// } else if (min >= 15 && min < 30) {
 //   qUarter = 'другу';
-// } else if (min >= 31 && min <= 45) {
+// } else if (min >= 30 && min < 45) {
 //   qUarter = 'третю';
-// } else if (min >= 46 && min <= 59) {
+// } else if (min >= 45 && min <= 59) {
 //   qUarter = 'четверту';
 // }
 // const msg = `${min} входить в ${qUarter} чверть`;
@@ -83,14 +82,15 @@
 
 // JavaScript version of: (unsigned)
 // printf "%0*d" width num
-function leftFillNum(num, targetLength) {
-  return num.toString().padStart(targetLength, '0');
-}
-// const num = 123;
-// console.log(leftFillNum(num, 5)); // "00123"
+// // const num = 123;
+// // console.log(leftFillNum(num, 5)); // "00123"
+
+// function leftFillNum(num, targetLength) {
+//   return num.toString().padStart(targetLength, '0');
+// }
 
 // const min = Number(prompt('Введіть кількість хвилин'));
-// const minsInDay = min % 1440; //відсікли час поза добою
+// const minsInDay = min % 1440; //відсікли час поза добою=60*24=1440
 // const holeMin = minsInDay % 60; //визначили хвилини поточної години
 // const hours =
 //   (minsInDay - holeMin) / 60 === 24 ? 0 : (minsInDay - holeMin) / 60; //визначили час в годинниковому форматі
@@ -155,6 +155,18 @@ function leftFillNum(num, targetLength) {
 // }
 // console.log('sum even numbers ', getNumbers(1, 10));
 
+// function getNumbers(min, max) {
+//   let count = 0;
+//   for (let i = max; i >= min; i--) {
+//     console.log(i);
+//     if (!(i % 2)) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+// console.log('count even numbers ', getNumbers(1, 10));
+
 // Завдання 8:
 
 // Напишіть функцію min(a, b), яка приймає 2 числа і повертає меньше з них.
@@ -190,19 +202,19 @@ function leftFillNum(num, targetLength) {
 // Якщо число ділитися без остачі на 3 - виводить в консоль 'fizz',
 // якщо ділиться без остачі на 5 - виводить в консоль 'buzz',
 // якщо ділиться без остачі і на 3, і на 5 - виводить в консоль 'fizzbuzz'.
-function fizzBuzz(num) {
-  let rez = '';
-  for (let i = 1; i <= num; i++) {
-    rez = '';
-    if (!(i % 3)) {
-      rez = 'fizz';
-    }
-    if (!(i % 5)) {
-      rez += 'buzz';
-    }
-    console.log(i, rez);
-  }
-  return true;
-}
+// function fizzBuzz(num) {
+//   let rez = '';
+//   for (let i = 1; i <= num; i++) {
+//     rez = '';
+//     if (!(i % 3)) {
+//       rez = 'fizz';
+//     }
+//     if (!(i % 5)) {
+//       rez += 'buzz';
+//     }
+//     console.log(i, rez);
+//   }
+//   return true;
+// }
 
-fizzBuzz(30);
+// fizzBuzz(30);
