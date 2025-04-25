@@ -117,14 +117,28 @@
 
 // const numbers = [2, 5, 35, 56, 12, 24, 7, 80, 3];
 // function findSmallestNumber(numbers) {
-//   console.log(typeof numbers);
+//   // console.log(typeof numbers);
 //   //масиви - це нащадки об'єктів, тому typeOf масива - верне object
-//   if (typeof numbers === 'object') {
+//   // if (typeof numbers === 'object') {
+//   if (Array.isArray(numbers)) {
 //     return Math.min(...numbers);
 //   }
 //   return 'Sory, it is not an array!';
 // }
-// console.log(findSmallestNumber([2, 5, 35, 56, 12, 24, 7, 80, 3]));
+// console.log(
+//   findSmallestNumber({
+//     2: 1,
+//     5: 1,
+//     35: 1,
+//     56: 1,
+//     12: 1,
+//     24: 1,
+//     7: 1,
+//     80: 1,
+//     3: 1,
+//   })
+// );
+// console.log(findSmallestNumber(numbers));
 
 // Завдання 6:
 
@@ -155,7 +169,7 @@
 // 2 - замінить hobby на 'skydiving',
 // 3 - замінить значення premium на false,
 // 4 - виведе зміст об'єкта user у форматі
-// '<ключ>:<значення>' використовуя Object.keys() та for...of
+// '<ключ>:<значення>' використовуючи Object.keys() та for...of
 
 // const user = {
 //   name: 'John',
@@ -193,17 +207,18 @@
 // Створіть об'єкт calculator з наступними методами:
 // read(a, b) - приймає два аргумента і зберігає їх як властивості об'єкта,
 // sum() - повертає сумму збереженних значень (з перевіркою на наявність властивостей в об'єкті),
-// mult() - перемножає збереженні значення і повертає результат (з перевіркою на наявність властивостей в об'єкті),
+// mult() - перемножає збережені значення і повертає результат (з перевіркою на наявність властивостей в об'єкті),
 // винесіть перевірку на наявність властивостей в об'єкті в окремий метод exist().
 
 // Якщо вказані властивості в обʼєкті відсутні (тобто метод exist повертає false),
-// методи sum і mult мають повертати рядок 'No such propeties'
+// методи sum і mult мають повертати рядок 'No such propeties'????? не зрозуміло в якому саме випадку це має бути
 
 // const calculator = {
 //   captions: [],
 //   read(a, b) {
-//     this[a] = b;
-//     this.captions.push(a);
+//     this[a] = a;
+//     this[b] = b;
+//     this.captions.push(a, b);
 //   },
 //   sum() {
 //     let sumCaption = 0;
@@ -215,14 +230,24 @@
 //     }
 //     return sumCaption;
 //   },
+//   mult() {
+//     let multCaption = 1;
+//     for (const key of this.captions) {
+//       if (this.exist(key)) {
+//         multCaption *= this[key];
+//         console.log('key=', key);
+//       }
+//     }
+//     return multCaption;
+//   },
 //   exist(key) {
 //     return this[key] !== undefined;
 //   },
 // };
 // calculator.read(1, 2);
-// calculator.read(2, 3);
 // calculator.read(3, 4);
-// calculator.read(4, 5);
+// calculator.read(5, 6);
+// calculator.read(7, 8);
 // console.log(calculator);
 // console.log(calculator.exist(1));
 // console.log(calculator.exist(2));
@@ -230,6 +255,7 @@
 // console.log(calculator.exist(4));
 // console.log(calculator.exist(5));
 // console.log(calculator.sum());
+// console.log(calculator.mult());
 
 // Завдання 10:
 
@@ -241,27 +267,27 @@
 // Зверніть увагу, що в масиві може бути кілька обʼєктів з однаковою
 // назвою фрукта, це також треба урахувати.
 
-const fruits = [
-  { name: 'Яблуко', price: 45, quantity: 7 },
-  { name: 'Апельсин', price: 60, quantity: 4 },
-  { name: 'Банан', price: 125, quantity: 8 },
-  { name: 'Груша', price: 350, quantity: 2 },
-  { name: 'Виноград', price: 440, quantity: 3 },
-  { name: 'Банан', price: 125, quantity: 3 },
-];
+// const fruits = [
+//   { name: 'Яблуко', price: 45, quantity: 7 },
+//   { name: 'Апельсин', price: 60, quantity: 4 },
+//   { name: 'Банан', price: 125, quantity: 8 },
+//   { name: 'Груша', price: 350, quantity: 2 },
+//   { name: 'Виноград', price: 440, quantity: 3 },
+//   { name: 'Банан', price: 125, quantity: 3 },
+// ];
 
-function calcTotalPrice(fruits, fruitName) {
-  let sum = 0;
-  for (const element of fruits) {
-    if (element.name === fruitName) {
-      sum += element.price * element.quantity;
-    }
-  }
-  return sum;
-}
+// function calcTotalPrice(fruits, fruitName) {
+//   let sum = 0;
+//   for (const element of fruits) {
+//     if (element.name.toLowerCase().trim() === fruitName.toLowerCase().trim()) {
+//       sum += element.price * element.quantity;
+//     }
+//   }
+//   return sum;
+// }
 
-console.log(calcTotalPrice(fruits, 'Банан'));
-console.log(calcTotalPrice(fruits, 'Яблуко'));
-console.log(calcTotalPrice(fruits, 'Апельсин'));
-console.log(calcTotalPrice(fruits, 'Груша'));
-console.log(calcTotalPrice(fruits, 'Виноград'));
+// console.log(calcTotalPrice(fruits, 'БаНан'));
+// console.log(calcTotalPrice(fruits, 'Яблуко'));
+// console.log(calcTotalPrice(fruits, 'Апельсин'));
+// console.log(calcTotalPrice(fruits, 'Груша'));
+// console.log(calcTotalPrice(fruits, 'Виноград'));
