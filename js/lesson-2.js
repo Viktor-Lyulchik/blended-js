@@ -14,6 +14,7 @@
 // Створіть масив styles з елементами 'jazz' і 'blues'
 // Додайте до кінця масиву елемент 'rock-n-roll' за допомогою відповідного методу масивів
 // Знайдіть елемент 'blues' у масиві та замініть його на 'classic', використовуючи JavaScript-код
+
 // const styles = ['jazz', 'blues'];
 // styles.push('rock-n-roll');
 // //varian1
@@ -21,14 +22,14 @@
 // if (indexBlues >= 0) {
 //   styles[indexBlues] = 'classic';
 // }
-////variant2
+// //variant2
 // for (const style of styles) {
 //   console.log(style);
 //   if (style === 'blues') {
 //     styles[styles.indexOf(style)] = 'classic';
 //   }
 // }
-//console.log(styles);
+// console.log(styles);
 
 // Напишіть функцію logItems(array), яка приймає масив як аргумент
 // і виводить у консоль кожен його елемент у форматі:
@@ -54,9 +55,8 @@
 
 // function checkLogin(array) {
 //   const userName = prompt('Enter your name').trim();
-//   const indexArr = array.indexOf(userName);
 //   let msg = 'User not found';
-//   if (indexArr >= 0) {
+//   if (array.indexOf(userName) >= 0) {
 //     msg = `Welcome, ${userName}`;
 //   }
 //   alert(msg);
@@ -66,23 +66,25 @@
 
 // Завдання 3:
 
-// Напишіть функцію caclculateAverage(),
+// Напишіть функцію calculateAverage(),
 // яка приймає довільну кількість
 // аргументів і повертає їхнє середнє значення.
 // Додайте перевірку, що аргументи - це числа.
 
-// function calculateAverage() {
+// function calculateAverage(...arg) {
 //   let sum = 0;
 //   let count = 0;
-//   for (const item of arguments) {
+//   for (const item of arg) {
 //     if (typeof item === 'number') {
 //       sum += item;
 //       count++;
 //     }
 //   }
+//   console.log(sum, count);
+
 //   return count > 0 ? sum / count : 0;
 // }
-// console.log(calculateAverage(2, 2, 2, 2, 2, 2, 2, 100));
+// console.log(calculateAverage(2, 2, 2, 2, 2, 2, 2, '100'));
 
 // Завдання 4:
 
@@ -94,7 +96,7 @@
 // уточнення: складати необхідно перше число з другим, потім друге - з третім,
 // третє - з четвертим і так до кінця.
 // В результаті функція має повертати масив [33, 45, 39, 17, 25, 27, 29].
-// function sumneighbor(arr) {
+// function sumNeighbor(arr) {
 //   const newarr = [];
 //   for (let i = 0; i < arr.length - 1; i++) {
 //     newarr.push(arr[i] + arr[i + 1]);
@@ -103,9 +105,9 @@
 // }
 // console.log('must be result', [33, 45, 39, 17, 25, 27, 29]);
 
-// console.log('arg', [22, 11, 34, 5, 12, 13, 14, 15]);
+// console.log('arg', someArr);
 
-// console.log('result', sumneighbor([22, 11, 34, 5, 12, 13, 14, 15]));
+// console.log('result', sumNeighbor(someArr));
 
 // Завдання 5:
 
@@ -114,17 +116,19 @@
 // Додайте перевірку, що функція отримує саме масив, і
 // якщо функція отримує масив - поверніть з функції найменше число,
 // в іншому випадку - поверніть 'Sory, it is not an array!'.
+// console.log(typeof numbers);
+// масиви - це нащадки об'єктів, тому typeOf масива - верне object
+// if (typeof numbers === 'object') {
 
 // const numbers = [2, 5, 35, 56, 12, 24, 7, 80, 3];
+
 // function findSmallestNumber(numbers) {
-//   // console.log(typeof numbers);
-//   //масиви - це нащадки об'єктів, тому typeOf масива - верне object
-//   // if (typeof numbers === 'object') {
 //   if (Array.isArray(numbers)) {
 //     return Math.min(...numbers);
 //   }
 //   return 'Sory, it is not an array!';
 // }
+
 // console.log(
 //   findSmallestNumber({
 //     2: 1,
@@ -138,6 +142,7 @@
 //     3: 1,
 //   })
 // );
+
 // console.log(findSmallestNumber(numbers));
 
 // Завдання 6:
@@ -162,6 +167,37 @@
 
 // console.log(findLongestWord('London is the capital of Great Britain')); // 'capital'
 
+// Написати функцію clearArray(array), котра створить новий масив
+// в якому не буде значень, які приводяться до false
+
+// const array = [
+//   1,
+//   0,
+//   54,
+//   'doc',
+//   null,
+//   'jpg',
+//   undefined,
+//   '',
+//   'png',
+//   'exe',
+//   false,
+//   'mp4',
+//   NaN,
+//   'hbs',
+// ];
+// function clearArray(array) {
+//   const arr = [];
+//   for (const elem of array) {
+////     if (Boolean(elem)) {
+//     if (elem) {
+//       arr.push(elem);
+//     }
+//   }
+//   console.log(arr);
+// }
+// clearArray(array);
+
 // Завдання 7:
 
 // Напишіть скрипт, який для об'єкту user, послідовно:
@@ -177,12 +213,29 @@
 //   hobby: 'tenis',
 //   premium: true,
 // };
+
 // user['mood'] = 'happy';
 // user.hobby = 'skydiving';
 // user.premium = false;
+
 // for (const key of Object.keys(user)) {
 //   console.log(`${key}:${user[key]}`);
 // }
+
+// Напишіть функцію checkKeyInObject(), яка приймає 2 параметри obj і key.
+// Функція буде перебирати об'єкт.
+// Якщо об'єкт має такий ключ - поверне true, в іншому випадку - false.
+// const user = {
+//   name: 'Igor',
+//   car: 'Mercedes',
+//   carColor: 'black',
+// };
+// function checkKeyInObject(obj, key) {
+//   return obj[key] !== undefined;
+////   return key in obj;
+// }
+// console.log(checkKeyInObject(user, 'car'));
+// console.log(checkKeyInObject(user, 'car1'));
 
 // Завдання 8:
 
@@ -241,7 +294,7 @@
 //     return multCaption;
 //   },
 //   exist(key) {
-//     return this[key] !== undefined;
+//     return this.hasOwnProperty(key);
 //   },
 // };
 // calculator.read(1, 2);
@@ -291,3 +344,42 @@
 // console.log(calcTotalPrice(fruits, 'Апельсин'));
 // console.log(calcTotalPrice(fruits, 'Груша'));
 // console.log(calcTotalPrice(fruits, 'Виноград'));
+
+// Напишіть функцію getPropertyValues(), яка приймає масив об'єктів
+// та ключ, і повертає масив значень цього ключа у кожному об'єкті
+
+// const myArr = [
+//   { name: 'John', age: 30 },
+//   { name: 'Jane', age: 25 },
+//   { name: 'Bob', age: 40 },
+// ];
+
+// function getPropertyValues(arr, key) {
+//   const newarr = [];
+//   for (const elem of arr) {
+//     console.log(elem);
+
+//     newarr.push(elem[key]);
+//   }
+//   return newarr;
+// }
+
+// console.log(getPropertyValues(myArr, 'age'));
+
+// Розрахувати загальну суму всіх замовлень та вивести інформацію у форматі:
+// `Загальна сума всіх замовлень: totalAmount`
+// const orders = [
+//   { id: 1, product: 'Футболка', quantity: 2, price: 15 },
+//   { id: 2, product: 'Шорти', quantity: 3, price: 20 },
+//   { id: 3, product: 'Кросівки', quantity: 1, price: 50 },
+// ];
+
+// function totalOrders(obj) {
+//   let sum = 0;
+//   for (const elem of obj) {
+//     sum += elem.quantity * elem.price;
+//   }
+//   return sum;
+// }
+
+// console.log(totalOrders(orders));
